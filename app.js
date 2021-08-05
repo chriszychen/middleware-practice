@@ -3,12 +3,14 @@ const moment = require('moment')
 const app = express()
 const port = 3000
 
+// 記錄request進入時間
 app.use((req, res, next) => {
   const reqTimestamp = Date.now()
   res.locals.reqTimestamp = reqTimestamp
   next()
 })
 
+// 記錄回傳response時間並計算request-response cycle花費時間
 const printLog = (req, res) => {
   const { reqTimestamp } = res.locals
   const resTimestamp = Date.now()
