@@ -1,5 +1,5 @@
 const express = require('express')
-const moment = require('moment')
+const dayjs = require('dayjs')
 const app = express()
 const port = 3000
 
@@ -8,7 +8,7 @@ app.use((req, res, next) => {
   const reqTimestamp = Date.now()
   next()
   const resTimestamp = Date.now()
-  console.log(`${moment(reqTimestamp).format('YYYY-MM-DD HH:mm:ss')} | ${req.method} from ${req.originalUrl} | total time: ${resTimestamp - reqTimestamp}ms`)
+  console.log(`${dayjs(reqTimestamp).format('YYYY-MM-DD HH:mm:ss')} | ${req.method} from ${req.originalUrl} | total time: ${resTimestamp - reqTimestamp}ms`)
 })
 
 app.get('/', (req, res, next) => {
